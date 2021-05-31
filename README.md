@@ -1,6 +1,6 @@
-# speed-reading
-Speed reading
+# Скорочтение 2.0
 
+Тренировки:
 
-- [earthquake](./docs/earthquake.html)
-- [lode_runner](./docs/lode_runner.html)
+- [Землетрясение](./docs/earthquake.html)
+- [Золотоискатель](./docs/lode_runner.html)
