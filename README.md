@@ -3,4 +3,4 @@ Speed reading
 
 
 - [earthquake](./docs/earthquake.html)
-[I'm an inline-style link](https://www.google.com)
+- [lode_runner](./docs/lode_runner.html)
