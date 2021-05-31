@@ -1,0 +1,110 @@
+<html>
+<head>
+    <meta charSet="utf-8">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #dot {
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+            border-radius: 50%;
+        }
+        #result {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+        }
+
+        #help {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        #number0, #number1, #number2, #number3, #number4, #number5, #number6, #number7, #number8, #number9 {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+<div id="dot"></div>
+<div id="result"></div>
+<div id="number0"></div>
+<div id="number1"></div>
+<div id="number2"></div>
+<div id="number3"></div>
+<div id="number4"></div>
+<div id="number5"></div>
+<div id="number6"></div>
+<div id="number7"></div>
+<div id="number8"></div>
+<div id="number9"></div>
+<div id="help">
+    Press SPACE to change
+</div>
+<script>
+    const dot = document.getElementById('dot');
+    const result = document.getElementById('result');
+    let sum = undefined;
+    function showNumbers() {
+        const numbers = [
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+            1 + Math.round(Math.random() * 8),
+        ];
+        if (sum !== undefined) {
+            dot.style.display = 'none';
+            result.innerText = sum;
+            result.style.display = 'block';
+            for (let index = 0; index < numbers.length; index++) {
+                document.getElementById(`number${index}`).style.display = 'none';
+            }
+            sum = undefined;
+            return;
+        }
+        dot.style.display = 'block';
+        result.style.display = 'none';
+        for (let index = 0; index < numbers.length; index++) {
+            const length = 50 + 200 * Math.random();
+            const corner = 2 * Math.PI * Math.random();
+            const element = document.getElementById(`number${index}`);
+            const size = 30 + Math.round(30 * Math.random());
+            element.style.display = 'block';
+            element.style.top = `${document.body.clientHeight / 2 + Math.round(length * Math.sin(corner))}px`;
+            element.style.left = `${document.body.clientWidth / 2 + Math.round(length * Math.cos(corner))}px`;
+            element.style.fontSize = `${size}px`;
+            element.innerText = numbers[index];
+        }
+        sum = numbers.reduce((sum, value) => sum + value, 0);
+    }
+    showNumbers();
+    document.addEventListener('keypress', showNumbers)
+</script>
+</body>
+</html>
+
