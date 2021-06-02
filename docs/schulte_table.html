@@ -2,12 +2,32 @@
 <head>
     <meta charSet="utf-8">
     <style>
+        @-webkit-keyframes orbit {
+            from { -webkit-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to   { -webkit-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        @-moz-keyframes orbit {
+            from { -moz-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to   { -moz-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        @-o-keyframes orbit {
+            from { -o-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to   { -o-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
         html, body {
             padding: 0;
             margin: 0;
             height: 100%;
             width: 100%;
             overflow: hidden;
+        }
+        #container {
+            width: 100%;
+            height: 100%;
         }
         #table {
             position: absolute;
@@ -20,6 +40,12 @@
             border-spacing: 0;
             border: 1px solid black;
         }
+        .animation {
+            -webkit-animation: orbit 4s linear infinite;
+            -moz-animation: orbit 4s linear infinite;
+            -o-animation: orbit 4s linear infinite;
+            animation: orbit 4s linear infinite;
+        }
         #center {
             background-color: green;
         }
@@ -30,19 +56,43 @@
             vertical-align: center;
             text-align: center;
         }
-        .platonov1 .red {
+        .platonov1 .variant1 {
             color: red;
         }
-        .platonov1 .black {
+        .platonov1 .variant2 {
             color: black;
         }
-        .platonov2 .red {
+        .platonov2 .variant1 {
             color: white;
             background-color: red;
         }
-        .platonov2 .black {
+        .platonov2 .variant2 {
             color: white;
             background-color: black;
+        }
+        .platonov3 .variant1 {
+            color: black;
+            background-color: yellow;
+        }
+        .platonov3 .variant2 {
+            color: yellow;
+            background-color: black;
+        }
+        .platonov4 .variant1 {
+            color: white;
+            background-color: green;
+        }
+        .platonov4 .variant2 {
+            color: green;
+            background-color: white;
+        }
+        .platonov5 .variant1 {
+            color: white;
+            background-color: #002a93;
+        }
+        .platonov5 .variant2 {
+            color: #002a93;
+            background-color: white;
         }
         #help {
             position: absolute;
@@ -55,25 +105,55 @@
     </style>
 </head>
 <body>
-<table id="table"></table>
+<div id="container">
+    <table id="table"></table>
+</div>
 <div id="help">
     Press SPACE to change
 </div>
 <script>
     const table = document.getElementById('table');
+    const container = document.getElementById('container');
+    const level = window.location.hash ? parseInt(window.location.hash.replace(/\D/, ''), 10) || 2 : 2;
+    alert(level);
     function showTable() {
+        container.classList.remove('animation');
         let content = '';
         const platonov1 = Math.random() > 0.5;
         const platonov2 = !platonov1 && Math.random() > 0.5;
-        const rows = 3 + 2 * Math.round(2 * Math.random());
-        const cels = 3 + 2 * Math.round(2 * Math.random());
+        const platonov3 = !platonov1 && !platonov2 && Math.random() > 0.5;
+        const platonov4 = !platonov1 && !platonov2 && !platonov3 && Math.random() > 0.5;
+        const platonov5 = !platonov1 && !platonov2 && !platonov3 && !platonov4 && Math.random() > 0.5;
+        const rows = 3 + 2 * Math.round(level * Math.random());
+        const cols = 3 + 2 * Math.round(level * Math.random());
+        const array = new Array(rows * cols);
+        if (Math.random() > 0.5) {
+            for (let index = 0; index < rows * cols; index++) {
+                let pos = Math.round((rows * cols - 1) * Math.random());
+                while (array[pos] !== undefined) {
+                    pos = Math.round((rows * cols - 1) * Math.random());
+                }
+                array[pos] = index + 1;
+            }
+        } else {
+            for (let i = 0; i < Math.min(cols, rows); i++) {
+                for (let j = 0; j < Math.max(cols, rows); j++) {
+                    let pos = Math.round((rows * cols - 1) * Math.random());
+                    while (array[pos] !== undefined) {
+                        pos = Math.round((rows * cols - 1) * Math.random());
+                    }
+                    array[pos] = j + 1;
+                }
+            }
+        }
         for (let i = 0; i < rows; i++) {
-            content += `<tr class="${platonov1 ? 'platonov1' : ''}${platonov2 ? 'platonov2' : ''}">`;
-            for (let j = 0; j < cels; j++) {
-                if (!platonov1 && !platonov2 && j * 2 + 1 === cels && i * 2 + 1 === rows && Math.random() > 0.5) {
+            content += `<tr class="${platonov1 ? 'platonov1' : ''}${platonov2 ? 'platonov2' : ''}${platonov3 ? 'platonov3' : ''}${platonov4 ? 'platonov4' : ''}${platonov5 ? 'platonov5' : ''}">`;
+            for (let j = 0; j < cols; j++) {
+                if (!platonov1 && !platonov2 && !platonov3 && !platonov4 && !platonov5 && j * 2 + 1 === cols && i * 2 + 1 === rows && Math.random() > 0.5) {
+                    container.classList.add('animation');
                     content += `<td class="cell" id="center"></td>`;
                 } else {
-                    content += `<td class="cell ${platonov1 || platonov2 ? Math.random() > 0.5 ? 'red' : 'black' : ''}">${Math.round(8 * Math.random() + 1)}</td>`;
+                    content += `<td class="cell ${platonov1 || platonov2 || platonov3 || platonov4 || platonov5 ? Math.random() > 0.5 ? 'variant1' : 'variant2' : ''}">${array.pop()}</td>`;
                 }
             }
             content += '</tr>';
