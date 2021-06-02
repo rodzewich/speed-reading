@@ -5,4 +5,7 @@
 - [Землетрясение](./docs/earthquake.html)
 - [Золотоискатель](./docs/lode_runner.html)
 - [Цвета](./docs/colors.html)
-- [Таблицы Шульте](./docs/schulte_table.html)
+- [Таблицы Шульте (уровень лапет)](./docs/schulte_table.html#1)
+- [Таблицы Шульте (уровень мое почтение)](./docs/schulte_table.html#2)
+- [Таблицы Шульте (уровень четкий пцанчик)](./docs/schulte_table.html#3)
+- [Таблицы Шульте (разрыв шаблона)](./docs/schulte_table.html#4)
