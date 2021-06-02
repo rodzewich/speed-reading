@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charSet="utf-8">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #table {
+            position: absolute;
+            padding: 0;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            font-size: 40px;
+            border-spacing: 0;
+            border: 1px solid black;
+        }
+        #center {
+            background-color: green;
+        }
+        .cell {
+            height: 80px;
+            width: 80px;
+            border: 1px solid black;
+            vertical-align: center;
+            text-align: center;
+        }
+        .platonov1 .red {
+            color: red;
+        }
+        .platonov1 .black {
+            color: black;
+        }
+        .platonov2 .red {
+            color: white;
+            background-color: red;
+        }
+        .platonov2 .black {
+            color: white;
+            background-color: black;
+        }
+        #help {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<table id="table"></table>
+<div id="help">
+    Press SPACE to change
+</div>
+<script>
+    const table = document.getElementById('table');
+    function showTable() {
+        let content = '';
+        const platonov1 = Math.random() > 0.5;
+        const platonov2 = !platonov1 && Math.random() > 0.5;
+        const rows = 3 + 2 * Math.round(2 * Math.random());
+        const cels = 3 + 2 * Math.round(2 * Math.random());
+        for (let i = 0; i < rows; i++) {
+            content += `<tr class="${platonov1 ? 'platonov1' : ''}${platonov2 ? 'platonov2' : ''}">`;
+            for (let j = 0; j < cels; j++) {
+                if (!platonov1 && !platonov2 && j * 2 + 1 === cels && i * 2 + 1 === rows && Math.random() > 0.5) {
+                    content += `<td class="cell" id="center"></td>`;
+                } else {
+                    content += `<td class="cell ${platonov1 || platonov2 ? Math.random() > 0.5 ? 'red' : 'black' : ''}">${Math.round(8 * Math.random() + 1)}</td>`;
+                }
+            }
+            content += '</tr>';
+        }
+        table.innerHTML = content;
+    }
+    showTable();
+    document.addEventListener('keypress', showTable);
+    document.addEventListener('click', showTable);
+</script>
+</body>
+</html>
