@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charSet="utf-8">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #text {
+            width: 700px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            padding: 24px;
+            font-size: 40px;
+        }
+        #help {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div id="text"></div>
+<div id="help">
+    Press SPACE to change
+</div>
+
+<script>
+    const colors = {
+        'Красный': '#FF0000',
+        'Оранжевый': '#FF8000',
+        'Зелёный': '#00C43A',
+        'Голубой': '#409cff',
+        'Синий': '#0000FF',
+        'Фиолетовый': '#7100C4',
+        'Серый': '#4c4c4c',
+        'Розовый': '#ffacb0',
+        'Чёрный': '#000000',
+    };
+    const text = document.getElementById('text');
+    function changeText() {
+        let content = '';
+        const keys = Object.keys(colors);
+        const values = Object.values(colors);
+        for (let index = 0; index < 30; index++) {
+            const text = keys[Math.round((keys.length - 1) * Math.random())];
+            const color = values[Math.round((values.length - 1) * Math.random())];
+            content += `<span style="color: ${color}">${text.toLowerCase()}</span> `;
+        }
+        text.innerHTML = content;
+    }
+    changeText();
+    document.addEventListener('keypress', changeText);
+    document.addEventListener('click', changeText);
+
+</script>
+</body>
+</html>
