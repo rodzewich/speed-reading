@@ -158,6 +158,9 @@
             content += '</tr>';
         }
         table.innerHTML = content;
+        if (rows * cols < 24 && level > 2) {
+            table.style.transform = `translate(-50%, -50%) scale(${Math.random() > 0.9 ? '-1' : '1'}, ${Math.random() > 0.9 ? '-1' : '1'}) rotate(${Math.round(360 * Math.random())}deg)`;
+        }
     }
     showTable();
     document.addEventListener('keypress', showTable);
