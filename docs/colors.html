@@ -30,24 +30,25 @@
     </style>
 </head>
 <body>
-
 <div id="text"></div>
 <div id="help">
     Press SPACE to change
 </div>
-
 <script>
     const colors = {
         'Красный': '#FF0000',
         'Оранжевый': '#FF8000',
+        'Жёлтый': '#FFFF00',
         'Зелёный': '#00C43A',
-        'Голубой': '#409cff',
-        'Синий': '#0000FF',
-        'Фиолетовый': '#7100C4',
-        'Серый': '#4c4c4c',
-        'Розовый': '#ffacb0',
+        'Голубой': '#00B8D9',
+        'Синий': '#004DFF',
+        'Фиолетовый': '#7100c4',
+        'Серый': '#999999',
+        'Розовый': '#FFD0E0',
+        'Коричневый': '#806000',
         'Чёрный': '#000000',
     };
+    const level = window.location.hash ? parseInt(window.location.hash.replace(/\D/, ''), 10) || 1 : 1;
     const text = document.getElementById('text');
     function changeText() {
         let content = '';
@@ -59,11 +60,15 @@
             content += `<span style="color: ${color}">${text.toLowerCase()}</span> `;
         }
         text.innerHTML = content;
+        if (level > 1) {
+            text.style.transform = `translate(-50%, -50%) scale(${Math.random() > 0.9 ? '-1' : '1'}, ${Math.random() > 0.9 ? '-1' : '1'}) rotate(${Math.round(360 * Math.random())}deg)`;
+        } else {
+            text.style.transform = `translate(-50%, -50%)`;
+        }
     }
     changeText();
     document.addEventListener('keypress', changeText);
     document.addEventListener('click', changeText);
-
 </script>
 </body>
 </html>
