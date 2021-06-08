@@ -1,4 +1,7 @@
 const backElement = document.createElement('a');
+backElement.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
 backElement.href = '../';
 backElement.appendChild(document.createTextNode('Go HOME'));
 backElement.style.color = 'black';
