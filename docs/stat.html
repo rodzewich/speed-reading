@@ -59,13 +59,13 @@
             const value = parseInt(result[date][name], 10);
             document.write(`<tr>`);
             document.write(`<td>${names[name] || name}</td>`);
-            document.write(`<td>${String((value / 60 / 60 / 1000) % 1).padStart(2, '0')}:${String(Math.round(value / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(value / 1000) % 60).padStart(2, '0')}</td>`);
+            document.write(`<td>${String(Math.trunc(value / 60 / 60 / 1000)).padStart(2, '0')}:${String(Math.round(value / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(value / 1000) % 60).padStart(2, '0')}</td>`);
             document.write(`</tr>`);
             total += value;
         }
         document.write(`<tr>`);
         document.write(`<th>Итого</th>`);
-        document.write(`<th>${String((total / 60 / 60 / 1000) % 1).padStart(2, '0')}:${String(Math.round(total / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(total / 1000) % 60).padStart(2, '0')}</th>`);
+        document.write(`<th>${String(Math.trunc(total / 60 / 60 / 1000)).padStart(2, '0')}:${String(Math.round(total / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(total / 1000) % 60).padStart(2, '0')}</th>`);
         document.write(`</tr>`);
         document.write(`</table>`);
     }
