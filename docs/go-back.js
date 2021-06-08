@@ -1,6 +1,6 @@
 const backElement = document.createElement('a');
 backElement.href = '../';
-backElement.appendChild(document.createTextNode('Go BACK'));
+backElement.appendChild(document.createTextNode('Go HOME'));
 backElement.style.color = 'black';
 backElement.style.textDecoration = 'none';
 backElement.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
