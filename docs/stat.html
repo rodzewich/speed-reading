@@ -27,7 +27,7 @@
         document.write(`<th>Время</th>`);
         document.write(`</tr>`);
         for (const name of Object.keys(result[date]).sort()) {
-            const value = result[date][name];
+            const value = parseInt(result[date][name], 10);
             document.write(`<tr>`);
             document.write(`<td>${name}</td>`);
             document.write(`<td>${String(Math.round(value / 60 / 60 / 1000)).padStart(2, '0')}:${String(Math.round(value / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(value / 1000) % 60).padStart(2, '0')}</td>`);
