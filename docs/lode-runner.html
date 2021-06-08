@@ -59,7 +59,7 @@
         const numbers = [];
         const coordinates = [];
         function findCoordinates(element, depth) {
-            const length = 50 + (level > 1 ? 300 : 200) * Math.random();
+            const length = 50 + (level > 1 ? 250 : 200) * Math.random();
             const corner = 2 * Math.PI * Math.random();
             const y = document.body.clientHeight / 2 + Math.round(length * Math.sin(corner));
             const x = document.body.clientWidth / 2 + Math.round(length * Math.cos(corner));
