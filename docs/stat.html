@@ -12,21 +12,32 @@
     for (const key of keys) {
         const [name, date] = key.split('_');
         if (name && date) {
-            if (result[date]) {
+            if (!result[date]) {
                 result[date] = {};
             }
             result[date][name] = localStorage.getItem(key);
         }
     }
     for (const date of Object.keys(result).sort()) {
+        let total = 0;
         document.write(`<h3>${date}</h3>`);
         document.write(`<table>`);
+        document.write(`<tr>`);
+        document.write(`<th>Упражнение</th>`);
+        document.write(`<th>Время</th>`);
+        document.write(`</tr>`);
         for (const name of Object.keys(result[date]).sort()) {
+            const value = result[date][name];
             document.write(`<tr>`);
             document.write(`<td>${name}</td>`);
-            document.write(`<td>${result[date][name]}</td>`);
+            document.write(`<td>${String(Math.round(value / 60 / 60 / 1000)).padStart(2, '0')}:${String(Math.round(value / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(value / 1000) % 60).padStart(2, '0')}</td>`);
             document.write(`</tr>`);
+            total += value;
         }
+        document.write(`<tr>`);
+        document.write(`<th>Итого</th>`);
+        document.write(`<th>${String(Math.round(total / 60 / 60 / 1000)).padStart(2, '0')}:${String(Math.round(total / 60 / 1000) % 60).padStart(2, '0')}:${String(Math.round(total / 1000) % 60).padStart(2, '0')}</th>`);
+        document.write(`</tr>`);
         document.write(`</table>`);
     }
 </script>
