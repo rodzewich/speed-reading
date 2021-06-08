@@ -29,10 +29,10 @@
 <body>
 <script>
     const names = {
-        'schulte-table': 'Таблицы Шульте',
-        'lode-runner': 'Золотоискатель',
         'colors': 'Цвета',
-        'earthquake': 'Землетрясение'
+        'earthquake': 'Землетрясение',
+        'lode-runner': 'Золотоискатель',
+        'schulte-table': 'Таблицы Шульте'
     };
     const keys = Object.keys(localStorage);
     const result = {};
@@ -46,7 +46,7 @@
         }
     }
     document.write(`<div id="text">`);
-    for (const date of Object.keys(result).sort()) {
+    for (const date of Object.keys(result).sort().reverse()) {
         let total = 0;
         document.write(`<h3>${date}</h3>`);
         document.write(`<table>`);
