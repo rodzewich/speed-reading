@@ -11,7 +11,7 @@ const stat = () => {
     const today = new Date();
     const script = location.pathname.split('/').pop().split('.').shift();
     const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
     const key = `${script}_${yyyy}-${mm}-${dd}`;
     const diff = Number(today) - statPoint;
