@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charSet="utf-8">
+    <style>
+        #table {
+            height: 540px;
+            width: 540px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+        }
+        #dot {
+            height: 30px;
+            width: 30px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+            border-radius: 50%;
+        }
+        #second-arrow {
+            width: 6px;
+            height: 250px;
+            background-color: green;;
+            position: absolute;
+            left: calc(50% - 3px);
+            top: calc(50% - 250px);
+            transform-origin: 3px 250px;
+            transform: rotate(0);
+            transition: transform 0.15s ease-out;
+        }
+        #minute-arrow {
+            width: 10px;
+            height: 200px;
+            background-color: gray;;
+            position: absolute;
+            left: calc(50% - 5px);
+            top: calc(50% - 200px);
+            transform-origin: 5px 200px;
+            transform: rotate(0);
+            transition: transform 0.15s ease-out;
+        }
+        #hour-arrow {
+            width: 14px;
+            height: 150px;
+            background-color: black;;
+            position: absolute;
+            left: calc(50% - 7px);
+            top: calc(50% - 150px);
+            transform-origin: 7px 150px;
+            transform: rotate(0);
+            transition: transform 0.15s ease-out;
+         }
+    </style>
+</head>
+<body>
+<div id="hour-arrow"></div>
+<div id="minute-arrow"></div>
+<div id="second-arrow"></div>
+<div id="dot"></div>
+<div id="table"></div>
+<script src="stat.js"></script>
+<script>
+    const hour = document.getElementById('hour-arrow');
+    const minute = document.getElementById('minute-arrow');
+    const second = document.getElementById('second-arrow');
+    function showTime() {
+        const date = new Date();
+        hour.style.transform = `rotate(${Math.round(10 * (date.getHours() % 12) / 12 * 360)/10}deg)`;
+        minute.style.transform = `rotate(${Math.round(10 * date.getMinutes() / 60 * 360)/10}deg)`;
+        second.style.transform = `rotate(${Math.round(10 * date.getSeconds() / 60 * 360)/10}deg)`;
+    }
+    setInterval(showTime, 200);
+</script>
+</body>
+</html>

@@ -10,4 +10,5 @@
 - [Таблицы Шульте (уровень мое почтение)](docs/schulte-table.html#2)
 - [Таблицы Шульте (уровень четкий пацанчик)](docs/schulte-table.html#3)
 - [Таблицы Шульте (разрыв шаблона)](docs/schulte-table.html#4)
+- [Часы](docs/clock.html#4)
 - [Статистика](./docs/stat.html)
