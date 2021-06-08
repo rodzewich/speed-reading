@@ -1,7 +1,8 @@
 const backElement = document.createElement('a');
 backElement.href = '../';
-backElement.appendChild(document.createTextNode('Go back'));
+backElement.appendChild(document.createTextNode('Go BACK'));
 backElement.style.color = 'black';
+backElement.style.textDecoration = 'none';
 backElement.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 backElement.style.position = 'absolute';
 backElement.style.left = '0';
