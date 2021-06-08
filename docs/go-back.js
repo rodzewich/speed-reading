@@ -8,3 +8,4 @@ backElement.style.left = '0';
 backElement.style.top = '0';
 backElement.style.fontSize = '20px';
 backElement.style.padding = '10px';
+document.body.appendChild(backElement);
