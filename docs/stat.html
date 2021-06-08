@@ -12,6 +12,9 @@
     for (const key of keys) {
         const [name, date] = key.split('_');
         if (name && date) {
+            if (result[date]) {
+                result[date] = {};
+            }
             result[date][name] = localStorage.getItem(key);
         }
     }
