@@ -1,0 +1,10 @@
+const backElement = document.createElement('a');
+backElement.setAttribute('href', document.createAttribute('../'));
+backElement.appendChild(document.createTextNode('Go back'));
+backElement.style.color = 'black';
+backElement.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+backElement.style.position = 'absolute';
+backElement.style.left = '0';
+backElement.style.top = '0';
+backElement.style.fontSize = '20px';
+backElement.style.padding = '10px';
