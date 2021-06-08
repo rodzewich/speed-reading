@@ -1,6 +1,6 @@
 # Скорочтение 2.0
 
-[НАЧАТЬ ТРЕНЮ](./docs/warm-up.html)
+[START](./docs/warm-up.html)
 
 ## Упражнения:
 
