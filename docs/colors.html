@@ -36,6 +36,7 @@
 </div>
 <script src="stat.js"></script>
 <script src="go-back.js"></script>
+<script src="flow.js"></script>
 <script>
     const colors = {
         'Красный': '#FF0000',
@@ -50,7 +51,7 @@
         'Коричневый': '#806000',
         'Чёрный': '#000000',
     };
-    const level = window.location.hash ? parseInt(window.location.hash.replace(/\D/, ''), 10) || 1 : 1;
+    const level = window.location.hash ? parseInt(window.location.hash.replace(/^#/, '').replace(/(?::.+)?$/, ''), 10) || 1 : 1;
     const text = document.getElementById('text');
     function changeText() {
         let content = '';

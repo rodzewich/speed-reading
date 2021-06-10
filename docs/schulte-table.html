@@ -113,10 +113,11 @@
 </div>
 <script src="stat.js"></script>
 <script src="go-back.js"></script>
+<script src="flow.js"></script>
 <script>
     const table = document.getElementById('table');
     const container = document.getElementById('container');
-    const level = window.location.hash ? parseInt(window.location.hash.replace(/\D/, ''), 10) || 2 : 2;
+    const level = window.location.hash ? parseInt(window.location.hash.replace(/^#/, '').replace(/(?::.+)?$/, ''), 10) || 2 : 2;
     function showTable() {
         container.classList.remove('animation');
         let content = '';

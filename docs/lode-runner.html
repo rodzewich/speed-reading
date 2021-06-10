@@ -46,10 +46,11 @@
 </div>
 <script src="stat.js"></script>
 <script src="go-back.js"></script>
+<script src="flow.js"></script>
 <script>
     const dot = document.getElementById('dot');
     const result = document.getElementById('result');
-    const level = window.location.hash ? parseInt(window.location.hash.replace(/\D/, ''), 10) || 0 : 1;
+    const level = window.location.hash ? parseInt(window.location.hash.replace(/^#/, '').replace(/(?::.+)?$/, ''), 10) || 0 : 1;
     for (let index = 0; index < 5 + level * 5; index++) {
         const div = document.createElement('div');
         document.body.appendChild(div);
