@@ -50,9 +50,9 @@ if (currentFlow) {
     if (currentConfig) {
         setTimeout(() => {
             const preparedHash = currentConfig.hash ? `${currentConfig.hash}:` : '';
-            window.location.href = nextConfig ? `./${nextConfig.name}.html#${preparedHash}${flowName}` : './';
+            window.location.href = nextConfig ? `./${nextConfig.name}.html#${preparedHash}${flowName}` : '../';
         }, Math.max(0, currentConfig.time - spentTime));
     } else {
-        window.location.href = './';
+        window.location.href = '../';
     }
 }
