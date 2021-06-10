@@ -29,5 +29,5 @@
 - [Разрыв шаблона](docs/schulte-table.html#4)
 
 ### Разное
-- [Часы](docs/clock.html#4)
+- [Часы](docs/clock.html)
 - [Статистика](./docs/stat.html)
