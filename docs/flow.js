@@ -29,7 +29,7 @@ const flowConfig = {
         },
         {
             name: 'stat',
-            time: 2 * 60 * 1000
+            time: 0.5 * 60 * 1000
         }
     ]
 };
