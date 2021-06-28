@@ -17,16 +17,16 @@
 })();
 
 (function () {
-    const id = "topmailru-code";
+    const id = 'topmailru-code';
     const tmr = window._tmr || (window._tmr = []);
-    tmr.push({id: "3220822", type: "pageView", start: (new Date()).getTime()});
+    tmr.push({id: '3220822', type: 'pageView', start: (new Date()).getTime()});
     if (!document.getElementById(id)) {
-        var ts = document.createElement("script");
+        const ts = document.createElement('script');
         ts.id = id;
-        ts.src = "https://top-fwz1.mail.ru/js/code.js";
-        ts.type = "text/javascript";
+        ts.src = 'https://top-fwz1.mail.ru/js/code.js';
+        ts.type = 'text/javascript';
         ts.async = true;
-        const s = document.getElementsByTagName("script")[0];
+        const s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ts, s);
     }
 })();
