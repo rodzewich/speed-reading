@@ -82,21 +82,21 @@
         document.write(`<table>`);
         document.write(`<tr>`);
         document.write(`<th>Упражнение</th>`);
-        document.write(`<th>Пн</th>`);
-        document.write(`<th>Вт</th>`);
-        document.write(`<th>Ср</th>`);
-        document.write(`<th>Чт</th>`);
-        document.write(`<th>Пт</th>`);
-        document.write(`<th>Сб</th>`);
-        document.write(`<th>Вс</th>`);
+        document.write(`<th class="cell">Пн</th>`);
+        document.write(`<th class="cell">Вт</th>`);
+        document.write(`<th class="cell">Ср</th>`);
+        document.write(`<th class="cell">Чт</th>`);
+        document.write(`<th class="cell">Пт</th>`);
+        document.write(`<th class="cell">Сб</th>`);
+        document.write(`<th class="cell">Вс</th>`);
         for (const name of Object.keys(results[dateRange]).sort()) {
             document.write(`<tr>`);
-            document.write(`<td class="cell">${names[name] || name}</td>`);
+            document.write(`<th>${names[name] || name}</th>`);
             for (let day = 1; day < 8; day++) {
                 const value = Math.round(results[dateRange][name][day] / 60 / 1000);
                 total[day] = total[day] || 0;
                 total[day] = total[day] + value;
-                document.write(`<td>${value || ''}</td>`);
+                document.write(`<td class="cell">${value || ''}</td>`);
             }
             document.write(`</tr>`);
         }
