@@ -37,7 +37,6 @@
         return `${yyyy}-${mm}-${dd}`;
     }
 
-
     const names = {
         'clock': 'Часы',
         'colors': 'Цвета',
@@ -96,9 +95,9 @@
         }
         document.write(`</tr>`);
         document.write(`<tr>`);
-        document.write(`<td>Итого</td>`);
+        document.write(`<th>Итого</th>`);
         for (let day = 1; day < 8; day++) {
-            document.write(`<td>${total[day] || ''}</td>`);
+            document.write(`<th>${total[day] || ''}</th>`);
         }
         document.write(`</tr>`);
         document.write(`</table>`);
