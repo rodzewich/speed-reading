@@ -9,6 +9,9 @@
             top: 0;
             transform: translate(-50%, 0);
         }
+        .cell {
+            text-align: center;
+        }
         h3 {
             font-size: 20px;
         }
@@ -88,7 +91,7 @@
         document.write(`<th>Вс</th>`);
         for (const name of Object.keys(results[dateRange]).sort()) {
             document.write(`<tr>`);
-            document.write(`<td>${names[name] || name}</td>`);
+            document.write(`<td class="cell">${names[name] || name}</td>`);
             for (let day = 1; day < 8; day++) {
                 const value = Math.round(results[dateRange][name][day] / 60 / 1000);
                 total[day] = total[day] || 0;
